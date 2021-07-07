@@ -34,6 +34,13 @@ var downloadCMD = &cobra.Command{
 
 		fmt.Println()
 		lumber.Info("Getting information for", starCount, "repos")
+
+		// Getting star information
+		stars, err := api.Stars(ghClient, starCount)
+		if err != nil {
+			lumber.Fatal(err, "Failed to get stars from GitHub API")
+		}
+		fmt.Printf("%#v\n", len(stars))
 	},
 }
 
