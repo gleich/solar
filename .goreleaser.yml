@@ -1,7 +1,7 @@
 release:
   github:
-    owner: github_username
-    name: 'project_name'
+    owner: gleich
+    name: 'solar'
   prerelease: auto
 before:
   hooks:

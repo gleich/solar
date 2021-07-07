@@ -1,8 +1,8 @@
 FROM golang:1.15-alpine3.12 AS builder
 
 # Meta data:
-LABEL maintainer="project_author_email"
-LABEL description="project_description"
+LABEL maintainer="email@mattglei.ch"
+LABEL description="🛰️ Clone all your starred GitHub repos"
 
 # Copying over all the files:
 COPY . /usr/src/app

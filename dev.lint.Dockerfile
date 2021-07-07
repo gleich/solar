@@ -1,8 +1,8 @@
 FROM golangci/golangci-lint:v1.38
 
 # Meta data
-LABEL maintainer="project_author_email"
-LABEL description="project_description"
+LABEL maintainer="email@mattglei.ch"
+LABEL description="🛰️ Clone all your starred GitHub repos"
 
 # Copying over files
 COPY . /usr/src/app

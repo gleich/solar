@@ -1,19 +1,17 @@
 <!-- DO NOT REMOVE - contributor_list:data:start:["gleich"]:end -->
 
-# Run `init.py`
+# solar
 
-# project_name
+🛰️ Clone all your starred GitHub repos
 
-project_description
-
-![build](https://github.com/github_username/project_name/workflows/build/badge.svg)
-![test](https://github.com/github_username/project_name/workflows/test/badge.svg)
-![lint](https://github.com/github_username/project_name/workflows/lint/badge.svg)
-![release](https://github.com/github_username/project_name/workflows/release/badge.svg)
+![build](https://github.com/gleich/solar/workflows/build/badge.svg)
+![test](https://github.com/gleich/solar/workflows/test/badge.svg)
+![lint](https://github.com/gleich/solar/workflows/lint/badge.svg)
+![release](https://github.com/gleich/solar/workflows/release/badge.svg)
 
 ## 🙌 Contributing
 
-Before contributing please read the [CONTRIBUTING.md file](https://github.com/gleich/project_name/blob/master/CONTRIBUTING.md).
+Before contributing please read the [CONTRIBUTING.md file](https://github.com/gleich/solar/blob/master/CONTRIBUTING.md).
 
 <!-- DO NOT REMOVE - contributor_list:start -->
 ## 👥 Contributors
