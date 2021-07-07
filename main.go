@@ -1,9 +1,13 @@
 package main
 
 import (
-	"github.com/gleich/logoru"
+	"github.com/gleich/lumber"
+	"github.com/gleich/solar/pkg/cmd"
 )
 
 func main() {
-	logoru.Success("Program booted up!")
+	err := cmd.RootCMD.Execute()
+	if err != nil {
+		lumber.Fatal(err, "Failed to execute root command")
+	}
 }
