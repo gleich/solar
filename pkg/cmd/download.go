@@ -3,9 +3,13 @@ package cmd
 import (
 	"fmt"
 
+	"code.cloudfoundry.org/bytefmt"
+	"github.com/AlecAivazis/survey/v2"
 	"github.com/gleich/lumber"
 	"github.com/gleich/solar/pkg/api"
 	"github.com/gleich/solar/pkg/ask"
+	"github.com/gleich/solar/pkg/clone"
+	"github.com/kyokomi/emoji"
 	"github.com/spf13/cobra"
 )
 
@@ -16,7 +20,11 @@ var downloadCMD = &cobra.Command{
 	Short:                 "Clone all starred repos",
 	Run: func(cmd *cobra.Command, args []string) {
 		// Asking the user some questions
-		err := ask.ConfirmRun(false)
+		err := ask.ConfirmOrExit(&survey.Confirm{
+			Message: "Are you sure that you want to run the program?",
+			Help:    "This program will use a large number of resources and should only be done once. Please make sure that you really want to run it before running",
+			Default: false,
+		})
 		if err != nil {
 			lumber.Fatal(err, "Failed to confirm run")
 		}
@@ -40,7 +48,31 @@ var downloadCMD = &cobra.Command{
 		if err != nil {
 			lumber.Fatal(err, "Failed to get stars from GitHub API")
 		}
-		fmt.Printf("%#v\n", len(stars))
+		lumber.Success("Got information for", starCount, "repos")
+
+		// Getting total number of GB that will be cloned
+		var totalKB uint64
+		for _, star := range stars {
+			totalKB += uint64(star.DiskUsage) * bytefmt.KILOBYTE
+		}
+		ask.ConfirmOrExit(&survey.Confirm{
+			Message: fmt.Sprintf("Will clone %v. Are you still sure?", bytefmt.ByteSize(totalKB)),
+			Default: false,
+		})
+
+		for _, star := range stars {
+			if star.IsEmpty {
+				lumber.Warning("Ignoring", star.Owner.Login+"/"+star.Name, "because it is empty")
+				continue
+			}
+
+			star.Description = emoji.Sprint(star.Description)
+
+			err = clone.Star(star)
+			if err != nil {
+				lumber.Fatal(err, "Failed to clone", star.Name+"/"+star.Owner.Login)
+			}
+		}
 	},
 }
 

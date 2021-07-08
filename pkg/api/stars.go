@@ -8,11 +8,14 @@ import (
 
 // A starred github repo
 type Star struct {
-	NameWithOwner string
-	Description   string
-	DiskUsage     githubv4.Int
-	IsEmpty       bool
-	URL           string
+	Name  string
+	Owner struct {
+		Login string
+	}
+	Description string
+	DiskUsage   githubv4.Int
+	IsEmpty     bool
+	URL         string
 }
 
 // Get star data
