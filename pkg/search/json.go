@@ -13,7 +13,7 @@ func WriteJSON(stars []api.Star) error {
 	if err != nil {
 		return err
 	}
-	err = os.WriteFile("repos.json", starsJSON, 0755)
+	err = os.WriteFile("repos.json", starsJSON, 0655)
 	if err != nil {
 		return err
 	}
