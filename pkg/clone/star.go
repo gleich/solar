@@ -44,7 +44,14 @@ func Star(star api.Star) error {
 		return err
 	}
 
+	fmt.Println()
 	lumber.Success("Cloned", star.Owner.Login+"/"+star.Name)
+
+	// Go back up
+	err = os.Chdir("..")
+	if err != nil {
+		return err
+	}
 
 	return nil
 }
