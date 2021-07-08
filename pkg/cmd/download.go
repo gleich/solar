@@ -55,10 +55,13 @@ var downloadCMD = &cobra.Command{
 		for _, star := range stars {
 			totalKB += uint64(star.DiskUsage) * bytefmt.KILOBYTE
 		}
-		ask.ConfirmOrExit(&survey.Confirm{
+		err = ask.ConfirmOrExit(&survey.Confirm{
 			Message: fmt.Sprintf("Will clone %v. Are you still sure?", bytefmt.ByteSize(totalKB)),
 			Default: false,
 		})
+		if err != nil {
+			lumber.Fatal(err, "Failed to confirm size with user")
+		}
 
 		for _, star := range stars {
 			if star.IsEmpty {
