@@ -18,11 +18,7 @@ func Star(star api.Star) error {
 			return err
 		}
 	}
-	err := os.Mkdir(star.Owner.Login, 0755)
-	if err != nil {
-		return err
-	}
-	err = os.Chdir(star.Owner.Login)
+	err := os.Chdir(star.Owner.Login)
 	if err != nil {
 		return err
 	}
