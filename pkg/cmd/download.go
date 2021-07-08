@@ -71,6 +71,7 @@ var downloadCMD = &cobra.Command{
 			}
 		}
 
+		clonedSoFar := 0
 		for _, star := range stars {
 			if star.IsEmpty {
 				lumber.Warning("Ignoring", star.Owner.Login+"/"+star.Name, "because it is empty")
@@ -79,11 +80,13 @@ var downloadCMD = &cobra.Command{
 
 			star.Description = emoji.Sprint(star.Description)
 
-			err = clone.Star(star)
+			err = clone.Star(star, starCount, clonedSoFar)
 			if err != nil {
 				lumber.Fatal(err, "Failed to clone", star.Name+"/"+star.Owner.Login)
 			}
+			clonedSoFar++
 		}
+		lumber.Success("Cloned", clonedSoFar, "stars. Thank you for using solar!")
 	},
 }
 

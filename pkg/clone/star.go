@@ -11,7 +11,7 @@ import (
 )
 
 // Clone a star repo
-func Star(star api.Star) error {
+func Star(star api.Star, starCount int, clonedSoFar int) error {
 	if _, err := os.Stat(star.Owner.Login); os.IsNotExist(err) {
 		err := os.Mkdir(star.Owner.Login, 0755)
 		if err != nil {
@@ -29,12 +29,16 @@ func Star(star api.Star) error {
 	Name:        %[2]v
 	Description: %v
 	Disk Usage:  %v
-	URL:         %v`,
+	URL:         %v
+
+	Progress:    %v out of %v cloned`,
 		star.Owner.Login,
 		star.Name,
 		star.Description,
 		bytefmt.ByteSize(uint64(star.DiskUsage)*bytefmt.KILOBYTE),
 		star.URL,
+		starCount,
+		clonedSoFar,
 	))
 
 	cmd := exec.Command("git", "clone", star.URL+".git")
