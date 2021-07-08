@@ -30,7 +30,7 @@ func Stars(github *githubv4.Client, starCount int) ([]Star, error) {
 					PageInfo struct {
 						EndCursor string
 					}
-				} `graphql:"starredRepositories(first: 100, after: $endCursor)"`
+				} `graphql:"starredRepositories(after: $endCursor)"`
 			}
 		}
 
@@ -44,6 +44,7 @@ func Stars(github *githubv4.Client, starCount int) ([]Star, error) {
 		}
 
 		stars = append(stars, query.Viewer.StarredRepositories.Nodes...)
+		endCursor = query.Viewer.StarredRepositories.PageInfo.EndCursor
 	}
 	return stars, nil
 }

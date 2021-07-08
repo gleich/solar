@@ -49,7 +49,7 @@ var downloadCMD = &cobra.Command{
 		if err != nil {
 			lumber.Fatal(err, "Failed to get stars from GitHub API")
 		}
-		lumber.Success("Got information for", starCount, "repos")
+		lumber.Success("Got information for", len(stars), "repos")
 
 		// Getting total number of GB that will be cloned
 		var totalKB uint64
