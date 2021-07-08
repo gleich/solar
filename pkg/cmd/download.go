@@ -9,6 +9,7 @@ import (
 	"github.com/gleich/solar/pkg/api"
 	"github.com/gleich/solar/pkg/ask"
 	"github.com/gleich/solar/pkg/clone"
+	"github.com/gleich/solar/pkg/search"
 	"github.com/kyokomi/emoji"
 	"github.com/spf13/cobra"
 )
@@ -61,6 +62,11 @@ var downloadCMD = &cobra.Command{
 		})
 		if err != nil {
 			lumber.Fatal(err, "Failed to confirm size with user")
+		}
+
+		err = search.WriteJSON(stars)
+		if err != nil {
+			lumber.Fatal(err, "Failed to write star data to JSON file")
 		}
 
 		for _, star := range stars {
