@@ -1,4 +1,5 @@
-FROM golangci/golangci-lint:v1.38
+# hadolint ignore=DL3007
+FROM golangci/golangci-lint:latest
 
 # Meta data
 LABEL maintainer="email@mattglei.ch"
