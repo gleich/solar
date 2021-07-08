@@ -6,8 +6,8 @@ import (
 
 // Data from the questions ask to the user
 type QuestionsData struct {
-	PAT   string
-	GBCap int
+	PAT    string
+	Search bool
 }
 
 // Ask the user a number of questions before running
@@ -22,9 +22,9 @@ func Questions() (QuestionsData, error) {
 			Validate: survey.Required,
 		},
 		{
-			Name: "gbcap",
-			Prompt: &survey.Input{
-				Message: "What is the max number amount of storage you want to be used locally?",
+			Name: "search",
+			Prompt: &survey.Confirm{
+				Message: "Do you want to be able to search over your cloned stars (you can't change this later)",
 			},
 			Validate: survey.Required,
 		},

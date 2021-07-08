@@ -64,9 +64,11 @@ var downloadCMD = &cobra.Command{
 			lumber.Fatal(err, "Failed to confirm size with user")
 		}
 
-		err = search.WriteJSON(stars)
-		if err != nil {
-			lumber.Fatal(err, "Failed to write star data to JSON file")
+		if answers.Search {
+			err = search.WriteJSON(stars)
+			if err != nil {
+				lumber.Fatal(err, "Failed to write star data to JSON file")
+			}
 		}
 
 		for _, star := range stars {
