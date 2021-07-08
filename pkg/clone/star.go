@@ -12,6 +12,12 @@ import (
 
 // Clone a star repo
 func Star(star api.Star) error {
+	if _, err := os.Stat(star.Owner.Login); os.IsNotExist(err) {
+		err := os.Mkdir(star.Owner.Login, 0755)
+		if err != nil {
+			return err
+		}
+	}
 	err := os.Mkdir(star.Owner.Login, 0755)
 	if err != nil {
 		return err
