@@ -18,3 +18,14 @@ builds:
     goarm:
       - 6
       - 7
+
+brews:
+  - tap:
+      owner: gleich
+      name: homebrew-taps
+    folder: Formula
+    homepage: 'https://github.com/gleich/solar'
+    commit_author:
+      name: gleich
+      email: git@mattglei.ch
+    install: bin.install "solar"
