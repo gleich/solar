@@ -15,6 +15,7 @@ type Star struct {
 	Description string
 	DiskUsage   githubv4.Int
 	IsEmpty     bool
+	IsPrivate   bool
 	URL         string
 }
 

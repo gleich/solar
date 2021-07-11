@@ -73,8 +73,25 @@ var downloadCMD = &cobra.Command{
 
 		clonedSoFar := 0
 		for _, star := range stars {
+			// Checking if the repo should be skipped
+			var (
+				ignored       = false
+				ignoredReason = ""
+			)
 			if star.IsEmpty {
-				lumber.Warning("Ignoring", star.Owner.Login+"/"+star.Name, "because it is empty")
+				ignored = true
+				ignoredReason = "empty"
+			}
+			if star.IsPrivate {
+				ignored = true
+				ignoredReason = "private"
+			}
+			if ignored {
+				lumber.Warning(
+					star.Name+"/"+star.Owner.Login,
+					"won't be cloned because it is",
+					ignoredReason,
+				)
 				continue
 			}
 

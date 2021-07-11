@@ -21,7 +21,7 @@
 
 ## ❓ What is solar?
 
-Solar is a command line tool for cloning every repo that your github account has starred. It is designed for offline use and was created for the [hackclub Zephyr trip](https://zephyr.hackclub.com). It will clone repos under the file format of `./OWNER/NAME`. Besides cloning solar also allows you to search over the cloned repos making it easy to find what you might be looking for. Searching is currently planned for solar version 2.0.
+Solar is a command line tool for cloning every repo that your github account has starred (as long as it is public). It is designed for offline use and was created for the [hackclub Zephyr trip](https://zephyr.hackclub.com). It will clone repos under the file format of `./OWNER/NAME`. Besides cloning solar also allows you to search over the cloned repos making it easy to find what you might be looking for. Searching is currently planned for solar version 2.0.
 
 ## 🚀 Install
 
