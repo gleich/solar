@@ -61,6 +61,7 @@ var downloadCMD = &cobra.Command{
 		err = ask.ConfirmOrExit(&survey.Confirm{
 			Message: fmt.Sprintf("Will clone %v. Are you still sure?", bytefmt.ByteSize(totalKB)),
 			Default: false,
+			Help:    "This amount will actually be less because we are cloning the repo with a depth of 1 instead of the full depth. The size will never be larger than the value provided.",
 		})
 		if err != nil {
 			lumber.Fatal(err, "Failed to confirm size with user")

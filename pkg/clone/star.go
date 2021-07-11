@@ -41,7 +41,7 @@ func Star(star api.Star, starCount int, clonedSoFar int) error {
 		starCount,
 	))
 
-	cmd := exec.Command("git", "clone", star.URL+".git")
+	cmd := exec.Command("git", "clone", "--depth=1", star.URL+".git")
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 	cmd.Stdin = os.Stdin
