@@ -37,8 +37,8 @@ func Star(star api.Star, starCount int, clonedSoFar int) error {
 		star.Description,
 		bytefmt.ByteSize(uint64(star.DiskUsage)*bytefmt.KILOBYTE),
 		star.URL,
-		starCount,
 		clonedSoFar,
+		starCount,
 	))
 
 	cmd := exec.Command("git", "clone", star.URL+".git")
