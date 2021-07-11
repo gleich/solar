@@ -54,7 +54,9 @@ var downloadCMD = &cobra.Command{
 		// Getting total number of GB that will be cloned
 		var totalKB uint64
 		for _, star := range stars {
-			totalKB += uint64(star.DiskUsage) * bytefmt.KILOBYTE
+			if !star.IsEmpty || !star.IsPrivate {
+				totalKB += uint64(star.DiskUsage) * bytefmt.KILOBYTE
+			}
 		}
 		err = ask.ConfirmOrExit(&survey.Confirm{
 			Message: fmt.Sprintf("Will clone %v. Are you still sure?", bytefmt.ByteSize(totalKB)),
