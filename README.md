@@ -27,10 +27,10 @@ Solar is a command line tool for cloning every repo that your github account has
 
 ### 🍎 macOS
 
-Simply install via the homebrew tap:
+Simply install via the homebrew homebrew-tap:
 
 ```bash
-brew install gleich/tap/solar
+brew install gleich/homebrew-tap/solar
 ```
 
 ### 🖥️ Linux and Windows

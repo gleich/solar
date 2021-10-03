@@ -22,7 +22,7 @@ builds:
 brews:
   - tap:
       owner: gleich
-      name: tap
+      name: homebrew-tap
     folder: Formula
     homepage: 'https://github.com/gleich/solar'
     commit_author:
