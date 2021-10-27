@@ -1,4 +1,4 @@
-FROM golang:1.17-alpine3.12 AS builder
+FROM golang:1.17.2-alpine3.13 AS builder
 
 # Meta data:
 LABEL maintainer="email@mattglei.ch"
