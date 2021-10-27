@@ -27,6 +27,11 @@ RUN apt-get update && apt-get install make=4.3-4.1 -y --no-install-recommends \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
+# Installing go 1.17
+RUN go install "golang.org/dl/go1.17@latest" \
+    && go1.17 download \
+    && mv "$(which go1.17)" "$(which go)"
+
 WORKDIR /usr/src/app
 
 CMD ["make", "local-lint"]
